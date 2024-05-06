@@ -118,6 +118,8 @@ POSTGRES_REQUIRED = [
 
 MYSQL_REQUIRED = ["pymysql", "types-PyMySQL"]
 
+MARIADB_REQUIRED = ["pymysql", "types-PyMySQL"]
+
 HBASE_REQUIRED = [
     "happybase>=1.2.0,<3",
 ]
@@ -201,6 +203,7 @@ CI_REQUIRED = (
     + AZURE_REQUIRED
     + ROCKSET_REQUIRED
     + HAZELCAST_REQUIRED
+    + MARIADB_REQUIRED
 )
 
 
@@ -368,6 +371,7 @@ setup(
         "cassandra": CASSANDRA_REQUIRED,
         "hazelcast": HAZELCAST_REQUIRED,
         "rockset": ROCKSET_REQUIRED,
+        "mariadb": MARIADB_REQUIRED,
     },
     include_package_data=True,
     license="Apache",
