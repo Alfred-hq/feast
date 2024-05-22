@@ -910,5 +910,11 @@ wrapt==1.16.0
     # via testcontainers
 xmltodict==0.13.0
     # via moto
-zipp==3.18.1
-    # via importlib-metadata
+zipp==3.17.0
+    # via
+    #   importlib-metadata
+    #   importlib-resources
+mysql-connector-python==8.4.0
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools
