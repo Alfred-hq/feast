@@ -229,6 +229,6 @@ websockets==12.0
     # via uvicorn
 zipp==3.17.0
     # via importlib-metadata
-
+mysql-connector-python==8.4.0
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
