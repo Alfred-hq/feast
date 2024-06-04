@@ -86,7 +86,7 @@ class DorisSQLSource(DataSource):
             name=self.name,
             type=DataSourceProto.CUSTOM_SOURCE,
             # Change this to doris path
-            data_source_class_type="feast.infra.offline_stores.contrib.doris_offline_store.utils.doris_source.DorisSQLSource",
+            data_source_class_type="feast.infra.offline_stores.contrib.doris_offline_store.doris_source.DorisSQLSource",
             field_mapping=self.field_mapping,
             custom_options=self._doris_options.to_proto(),
             description=self.description,
