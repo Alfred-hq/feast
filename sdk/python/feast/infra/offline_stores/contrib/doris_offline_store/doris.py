@@ -90,7 +90,7 @@ class DorisSQLOfflineStore(OfflineStore):
                 SELECT {a_field_string},
                 ROW_NUMBER() OVER({partition_by_join_key_string} ORDER BY {timestamp_desc_string}) AS _feast_row
                 FROM {from_expression} a
-                WHERE a.{timestamp_field} BETWEEN `{start_date}` AND `{end_date}`
+                WHERE a.{timestamp_field} BETWEEN '{start_date}' AND '{end_date}'
             ) b
             WHERE _feast_row = 1
             """
