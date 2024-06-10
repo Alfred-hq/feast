@@ -512,7 +512,7 @@ WITH entity_dataframe AS (
         ON 1=1
         AND subquery.event_timestamp <= entity_dataframe.{{entity_df_event_timestamp_col}}
         {% if featureview.ttl != 0 %}
-        AND {{ featureview.ttl }} >= DATEDIFF(SECOND, subquery.event_timestamp, entity_dataframe.{{entity_df_event_timestamp_col}})
+        AND {{ featureview.ttl }} >= TIMESTAMPDIFF(SECOND, subquery.event_timestamp, entity_dataframe.{{entity_df_event_timestamp_col}})
         {% endif %}
         {% for entity in featureview.entities %}
         AND subquery.{{ entity }} = entity_dataframe.{{ entity }}
