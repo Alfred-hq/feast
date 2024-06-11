@@ -292,7 +292,7 @@ PYTHON_LIST_VALUE_TYPE_TO_PROTO_VALUE: Dict[
 PYTHON_SCALAR_VALUE_TYPE_TO_PROTO_VALUE: Dict[
     ValueType, Tuple[str, Any, Optional[Set[Type]]]
 ] = {
-    ValueType.INT32: ("int32_val", lambda x: int(x), None),
+    ValueType.INT32: ("int32_val", lambda x: int(float(x)), None),
     ValueType.INT64: (
         "int64_val",
         lambda x: int(x.timestamp())
