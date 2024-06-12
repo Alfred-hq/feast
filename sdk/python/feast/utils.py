@@ -258,12 +258,13 @@ def _convert_arrow_to_proto(
     return list(zip(entity_keys, features, event_timestamps, created_timestamps))
 
 
-def get_features_from_feature_service(feature_service_name, feature_store) -> Dict[str, str]:
+def get_features_from_feature_service(feature_service_name, feature_store):
     feature_service = feature_store.get_feature_service(feature_service_name).feature_view_projections
-    features_list = []
     output = {}
     for fv in feature_service:
-        features_list.extend(fv.features)
-    for feature in features_list:
-        output[feature.name] = str(feature.dtype)
+        feature_list = fv.features
+        temp = []
+        for feature in feature_list:
+            temp.append(feature.name)
+        output[str(fv.name)] = temp
     return output
