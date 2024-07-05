@@ -68,42 +68,5 @@ def get_query_schema(config: DorisSQLConfig, sql_query: str) -> Dict[str, np.dty
             sql_query,
             conn,
         )
-        columns = list(df.columns)
-        column_list = "', '".join(columns)
-        query = f"""
-        SELECT 
-            COLUMN_NAME,
-            DATA_TYPE
-        FROM 
-            information_schema.COLUMNS
-        WHERE 
-            TABLE_SCHEMA = '{config.database}'
-            AND COLUMN_NAME IN ('{column_list}');
-        """
-        dtype_df = pd.read_sql(query, conn)
-        dtype_mapping = {
-            "NULL": np.dtype(object),
-            "BOOLEAN": np.dtype(np.bool_),
-            "TINYINT": np.dtype(np.int8),
-            "SMALLINT": np.dtype(np.int16),
-            "INT": np.dtype(np.int32),
-            "BIGINT": np.dtype(np.int64),
-            "ARRAY<INT>": np.dtype(object),
-            "ARRAY<BIGINT>": np.dtype(object),
-            "ARRAY<BOOLEAN>": np.dtype(object),
-            "ARRAY<DOUBLE>": np.dtype(object),
-            "ARRAY<DATETIME>": np.dtype(object),
-            "FLOAT": np.dtype(np.float32),
-            "DOUBLE": np.dtype(np.float64),
-            "BINARY": np.dtype(object),
-            "STRING": np.dtype(object),
-            "DATETIME": np.dtype("datetime64[ns]"),
-            "TIMESTAMP": np.dtype("datetime64[ns]"),
-            "TIMESTAMP WITH TIME ZONE": np.dtype("datetime64[ns]"),
-            "TIMESTAMP WITHOUT TIME ZONE": np.dtype("datetime64[ns]"),
-        }
-        dtype_df["DATA_TYPE"] = dtype_df["DATA_TYPE"].apply(
-            lambda x: dtype_mapping.get(x.upper(), np.dtype(object))
-        )
 
-        return dict(zip(dtype_df["COLUMN_NAME"], dtype_df["DATA_TYPE"]))
+        return dict(zip(df["COLUMN_NAME"], df["DATA_TYPE"]))
