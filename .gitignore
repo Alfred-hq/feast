@@ -63,7 +63,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-# build/
+build/
 classes/
 develop-eggs/
 dist/
@@ -183,11 +183,11 @@ dmypy.json
 .metals
 *.code-workspace
 
-# # Protos
-# sdk/python/docs/html
-# sdk/python/feast/protos/
-# sdk/go/protos/
-# go/protos/
+# Protos
+sdk/python/docs/html
+sdk/python/feast/protos/
+sdk/go/protos/
+go/protos/
 
 #benchmarks
 .benchmarks
@@ -200,16 +200,16 @@ dmypy.json
 
 
 # Feast UI dependencies
-# sdk/python/feast/ui/node_modules
-# sdk/python/feast/ui/build
-# ui/node_modules
-# ui/.pnp
-# ui/.pnp.js
-# ui/coverage
-# # ui/build
-# ui/feature_repo/data/online.db
-# ui/feature_repo/registry.db
-# ui/.vercel
+sdk/python/feast/ui/node_modules
+sdk/python/feast/ui/build
+ui/node_modules
+ui/.pnp
+ui/.pnp.js
+ui/coverage
+ui/build
+ui/feature_repo/data/online.db
+ui/feature_repo/registry.db
+ui/.vercel
 
 # misc
 .DS_Store

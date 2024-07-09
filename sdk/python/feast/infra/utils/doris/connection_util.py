@@ -69,4 +69,4 @@ def get_query_schema(config: DorisSQLConfig, sql_query: str) -> Dict[str, np.dty
             conn,
         )
 
-        return dict(zip(df.columns, df.dtypes))
+        return dict(zip(df["COLUMN_NAME"], df["DATA_TYPE"]))
