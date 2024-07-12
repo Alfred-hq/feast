@@ -34,11 +34,12 @@ except ImportError:
     from distutils.command.build_py import build_py
     from distutils.core import setup
 
-NAME = "feast"
-DESCRIPTION = "Python SDK for Feast"
-URL = "https://github.com/feast-dev/feast"
-AUTHOR = "Feast"
-REQUIRES_PYTHON = ">=3.9.0"
+NAME = "feast_doris"
+DESCRIPTION = "Python SDK for Feast modified for doris"
+URL = "https://github.com/Alfred-hq/feast.git"
+AUTHOR = "DQLabs"
+REQUIRES_PYTHON = ">=3.8.0"
+VERSION = "0.1.0"
 
 REQUIRED = [
     "click>=7.0.0,<9.0.0",
@@ -348,6 +349,7 @@ class DevelopCommand(develop):
 
 setup(
     name=NAME,
+    version=VERSION,
     author=AUTHOR,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
