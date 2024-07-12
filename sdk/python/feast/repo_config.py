@@ -73,7 +73,7 @@ OFFLINE_STORE_CLASS_FOR_TYPE = {
     "snowflake.offline": "feast.infra.offline_stores.snowflake.SnowflakeOfflineStore",
     "spark": "feast.infra.offline_stores.contrib.spark_offline_store.spark.SparkOfflineStore",
     "trino": "feast.infra.offline_stores.contrib.trino_offline_store.trino.TrinoOfflineStore",
-    "doris": "feast_plugin_doris.doris.DorisSQLOfflineStore",
+    "doris": "feast.infra.offline_stores.contrib.doris_offline_store.doris.DorisSQLOfflineStore",
     "postgres": "feast.infra.offline_stores.contrib.postgres_offline_store.postgres.PostgreSQLOfflineStore",
     "athena": "feast.infra.offline_stores.contrib.athena_offline_store.athena.AthenaOfflineStore",
     "mssql": "feast.infra.offline_stores.contrib.mssql_offline_store.mssql.MsSqlServerOfflineStore",

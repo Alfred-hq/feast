@@ -34,11 +34,12 @@ except ImportError:
     from distutils.command.build_py import build_py
     from distutils.core import setup
 
-NAME = "feast"
-DESCRIPTION = "Python SDK for Feast"
-URL = "https://github.com/feast-dev/feast"
-AUTHOR = "Feast"
-REQUIRES_PYTHON = ">=3.9.0"
+NAME = "feast_doris"
+DESCRIPTION = "Python SDK for Feast modified for doris"
+URL = "https://github.com/Alfred-hq/feast.git"
+AUTHOR = "DQLabs"
+REQUIRES_PYTHON = ">=3.8.0"
+VERSION = "0.1.0"
 
 REQUIRED = [
     "click>=7.0.0,<9.0.0",
@@ -64,8 +65,13 @@ REQUIRED = [
     "typeguard>=4.0.0",
     "fastapi>=0.68.0",
     "uvicorn[standard]>=0.14.0,<1",
-    "gunicorn; platform_system != 'Windows'",
-    "dask[dataframe]>=2024.4.2",
+    "gunicorn",
+    "dask==2024.6.2",
+    "bowler",  # Needed for automatic repo upgrades
+    # FastAPI does not correctly pull starlette dependency on httpx see thread(https://github.com/tiangolo/fastapi/issues/5656).
+    "httpx>=0.23.3",
+    "importlib-resources>=6.0.0,<7",
+    "importlib_metadata>=6.8.0,<7",
 ]
 
 GCP_REQUIRED = [
@@ -102,7 +108,7 @@ POSTGRES_REQUIRED = [
     "psycopg2-binary>=2.8.3,<3",
 ]
 
-MYSQL_REQUIRED = ["pymysql", "types-PyMySQL"]
+MYSQL_REQUIRED = ["pymysql", "types-PyMySQL", "mysql-connector-python"]
 
 HBASE_REQUIRED = [
     "happybase>=1.2.0,<3",
@@ -343,6 +349,7 @@ class DevelopCommand(develop):
 
 setup(
     name=NAME,
+    version=VERSION,
     author=AUTHOR,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,

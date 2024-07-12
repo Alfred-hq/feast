@@ -256,3 +256,27 @@ def _convert_arrow_to_proto(
         created_timestamps = [None] * table.num_rows
 
     return list(zip(entity_keys, features, event_timestamps, created_timestamps))
+
+
+def list_features_from_feature_service(feature_service_name, feature_store):
+    feature_service = feature_store.get_feature_service(feature_service_name).feature_view_projections
+    output = {}
+    for fv in feature_service:
+        feature_list = fv.features
+        temp = []
+        for feature in feature_list:
+            temp.append(feature.name)
+        output[str(fv.name)] = temp
+    return output
+
+
+def list_all_available_features_in_feature_service(feature_store):
+    feature_services = feature_store.list_feature_services()
+    fs_features = {}
+    for fs in feature_services:
+        features = []
+        temp = list(list_features_from_feature_service(str(fs.name), feature_store).values())
+        for i in temp:
+            features.extend(i)
+        fs_features[fs.name] = features
+    return fs_features
