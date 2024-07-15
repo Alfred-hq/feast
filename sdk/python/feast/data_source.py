@@ -576,6 +576,7 @@ class RequestSource(DataSource):
         )
 
     def to_proto(self) -> DataSourceProto:
+
         schema_pb = []
 
         if isinstance(self.schema, Dict):
